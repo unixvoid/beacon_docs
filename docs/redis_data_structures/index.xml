@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Redis_data_structures on beacon-docs</title>
-    <link>https://unixvoid.com/redis_data_structures/index.xml</link>
+    <link>https://unixvoid.github.io/beacon_docs/redis_data_structures/index.xml</link>
     <description>Recent content in Redis_data_structures on beacon-docs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
-    <atom:link href="https://unixvoid.com/redis_data_structures/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://unixvoid.github.io/beacon_docs/redis_data_structures/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Redis Data Structures with beacon</title>
-      <link>https://unixvoid.com/redis_data_structures/</link>
+      <link>https://unixvoid.github.io/beacon_docs/redis_data_structures/</link>
       <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
       
-      <guid>https://unixvoid.com/redis_data_structures/</guid>
+      <guid>https://unixvoid.github.io/beacon_docs/redis_data_structures/</guid>
       <description>&lt;p&gt;This is designed to help the user understand what is going on inside of redis at a low level.  The following are redis keys (with examples) and what they store.&lt;/p&gt;
 
 &lt;ul&gt;

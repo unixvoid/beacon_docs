@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>beacon-docs</title>
-    <link>https://unixvoid.com/index.xml</link>
+    <link>https://unixvoid.github.io/beacon_docs/index.xml</link>
     <description>Recent content on beacon-docs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
-    <atom:link href="https://unixvoid.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://unixvoid.github.io/beacon_docs/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Configuring beacon</title>
-      <link>https://unixvoid.com/configuration/</link>
+      <link>https://unixvoid.github.io/beacon_docs/configuration/</link>
       <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
       
-      <guid>https://unixvoid.com/configuration/</guid>
+      <guid>https://unixvoid.github.io/beacon_docs/configuration/</guid>
       <description>&lt;p&gt;Beacon uses &lt;strong&gt;gcfg&lt;/strong&gt; (INI-style config files for go structs).&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;[beacon]
@@ -53,10 +53,10 @@
     
     <item>
       <title>REST API Endpoints</title>
-      <link>https://unixvoid.com/api/</link>
+      <link>https://unixvoid.github.io/beacon_docs/api/</link>
       <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
       
-      <guid>https://unixvoid.com/api/</guid>
+      <guid>https://unixvoid.github.io/beacon_docs/api/</guid>
       <description>
 
 &lt;h2 id=&#34;api&#34;&gt;API&lt;/h2&gt;
@@ -174,10 +174,10 @@ curl -d id=unixvoid -d sec=yQHfXWrUMVDNaHoSkDhRhqG26 https://beacon.unixvoid.com
     
     <item>
       <title>Redis Data Structures with beacon</title>
-      <link>https://unixvoid.com/redis_data_structures/</link>
+      <link>https://unixvoid.github.io/beacon_docs/redis_data_structures/</link>
       <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
       
-      <guid>https://unixvoid.com/redis_data_structures/</guid>
+      <guid>https://unixvoid.github.io/beacon_docs/redis_data_structures/</guid>
       <description>&lt;p&gt;This is designed to help the user understand what is going on inside of redis at a low level.  The following are redis keys (with examples) and what they store.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -197,10 +197,10 @@ example &lt;code&gt;sec:bd98828400c404c3fea&amp;lt;SNIP&amp;gt;&lt;/code&gt; e7f
     
     <item>
       <title>SSL Configuration</title>
-      <link>https://unixvoid.com/ssl_config/</link>
+      <link>https://unixvoid.github.io/beacon_docs/ssl_config/</link>
       <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
       
-      <guid>https://unixvoid.com/ssl_config/</guid>
+      <guid>https://unixvoid.github.io/beacon_docs/ssl_config/</guid>
       <description>&lt;p&gt;Beacon supports SSL out of the box.  The implementation is pretty simple, but results an &amp;lsquo;A&amp;rsquo; on &lt;a href=&#34;https://www.ssllabs.com/&#34;&gt;Qualys SSL Labs&lt;/a&gt;.  If a more lenient SSL implementation is needed you can edit the tls config portion of beacon.go.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;tlsConfig := &amp;amp;tls.Config{
@@ -246,10 +246,10 @@ example &lt;code&gt;sec:bd98828400c404c3fea&amp;lt;SNIP&amp;gt;&lt;/code&gt; e7f
     
     <item>
       <title>Key-value storage API with Go</title>
-      <link>https://unixvoid.com/</link>
+      <link>https://unixvoid.github.io/beacon_docs/</link>
       <pubDate>Tue, 08 Mar 2016 21:07:13 +0100</pubDate>
       
-      <guid>https://unixvoid.com/</guid>
+      <guid>https://unixvoid.github.io/beacon_docs/</guid>
       <description>
 
 &lt;h2 id=&#34;beacon&#34;&gt;Beacon&lt;/h2&gt;

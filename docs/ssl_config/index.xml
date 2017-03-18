@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ssl_configs on beacon-docs</title>
-    <link>https://unixvoid.com/ssl_config/index.xml</link>
+    <link>https://unixvoid.github.io/beacon_docs/ssl_config/index.xml</link>
     <description>Recent content in Ssl_configs on beacon-docs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
-    <atom:link href="https://unixvoid.com/ssl_config/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://unixvoid.github.io/beacon_docs/ssl_config/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>SSL Configuration</title>
-      <link>https://unixvoid.com/ssl_config/</link>
+      <link>https://unixvoid.github.io/beacon_docs/ssl_config/</link>
       <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
       
-      <guid>https://unixvoid.com/ssl_config/</guid>
+      <guid>https://unixvoid.github.io/beacon_docs/ssl_config/</guid>
       <description>&lt;p&gt;Beacon supports SSL out of the box.  The implementation is pretty simple, but results an &amp;lsquo;A&amp;rsquo; on &lt;a href=&#34;https://www.ssllabs.com/&#34;&gt;Qualys SSL Labs&lt;/a&gt;.  If a more lenient SSL implementation is needed you can edit the tls config portion of beacon.go.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;tlsConfig := &amp;amp;tls.Config{
