@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ssl_configs on beacon-docs</title>
+    <link>https://unixvoid.com/ssl_config/index.xml</link>
+    <description>Recent content in Ssl_configs on beacon-docs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license</copyright>
+    <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
+    <atom:link href="https://unixvoid.com/ssl_config/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SSL Configuration</title>
+      <link>https://unixvoid.com/ssl_config/</link>
+      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
+      
+      <guid>https://unixvoid.com/ssl_config/</guid>
+      <description>&lt;p&gt;Beacon supports SSL out of the box.  The implementation is pretty simple, but results an &amp;lsquo;A&amp;rsquo; on &lt;a href=&#34;https://www.ssllabs.com/&#34;&gt;Qualys SSL Labs&lt;/a&gt;.  If a more lenient SSL implementation is needed you can edit the tls config portion of beacon.go.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tlsConfig := &amp;amp;tls.Config{
+	MinVersion:               tls.VersionTLS12,
+	CurvePreferences:         []tls.CurveID{tls.CurveP521, tls.CurveP384, tls.CurveP256},
+	PreferServerCipherSuites: true,
+	CipherSuites: []uint16{
+		tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+		tls.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+		tls.TLS_RSA_WITH_AES_256_CBC_SHA,
+	},
+	ClientSessionCache: tls.NewLRUClientSessionCache(128),
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A more lenient config would look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tlsConfig := &amp;amp;tls.Config{
+	MinVersion: tls.VersionTLS12,
+	MaxVersion: tls.VersionTLS12,
+	CipherSuites: []uint16{
+		tls.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+		tls.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,
+		tls.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+		tls.TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+		tls.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+		tls.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+		tls.TLS_RSA_WITH_AES_128_CBC_SHA,
+		tls.TLS_RSA_WITH_AES_256_CBC_SHA,
+		tls.TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA,
+		tls.TLS_RSA_WITH_3DES_EDE_CBC_SHA,
+	},
+	PreferServerCipherSuites: true,
+	ClientSessionCache:       tls.NewLRUClientSessionCache(128),
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The way I tend to use beacon is behind a reverse proxy (nginx) which I use to demark SSL, but the internal SSL implementation has been tested and is a very good stand alone SSL client.&lt;/p&gt;
+
+&lt;p&gt;If you intend to put beacon behind a reverse proxy simply set &lt;code&gt;usetls&lt;/code&gt; to &lt;code&gt;false&lt;/code&gt; in the config file.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

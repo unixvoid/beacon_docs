@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>beacon-docs</title>
+    <link>https://unixvoid.com/index.xml</link>
+    <description>Recent content on beacon-docs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license</copyright>
+    <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
+    <atom:link href="https://unixvoid.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Configuring beacon</title>
+      <link>https://unixvoid.com/configuration/</link>
+      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
+      
+      <guid>https://unixvoid.com/configuration/</guid>
+      <description>&lt;p&gt;Beacon uses &lt;strong&gt;gcfg&lt;/strong&gt; (INI-style config files for go structs).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[beacon]
+	port			= 8808
+	tokensize		= 25
+	tokendictionary 	= &amp;quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&amp;quot;
+[redis]
+	host			= &amp;quot;localhost:6379&amp;quot;
+	password		= &amp;quot;&amp;quot;
+[ssl]
+	usetls			= true
+	servercert		= deps/test.crt
+	serverkey		= deps/test.key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The config uses some pretty sane defaults but the following fields are configurable:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;[beacon]&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+ &lt;code&gt;port:&lt;/code&gt;  the port the API listens on.&lt;br /&gt;
+ &lt;code&gt;tokensize:&lt;/code&gt; the length of authorization string returned from the client&lt;br /&gt;
+ &lt;code&gt;tokendictionary:&lt;/code&gt; the allowed characters that make up the client authentication string&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;[redis]&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;host:&lt;/code&gt;  this is the ip and port that the redis backend is running on&lt;br /&gt;
+&lt;code&gt;password:&lt;/code&gt;  password to the redis database-&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;[ssl]&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;usessl:&lt;/code&gt;  boolean (takes true/false) weather or not to use ssl. Defaults to no&lt;br /&gt;
+&lt;code&gt;servercert:&lt;/code&gt;  relative path to ssl cert&lt;br /&gt;
+&lt;code&gt;serverkey:&lt;/code&gt;  relative path to ssl private key&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>REST API Endpoints</title>
+      <link>https://unixvoid.com/api/</link>
+      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
+      
+      <guid>https://unixvoid.com/api/</guid>
+      <description>
+
+&lt;h2 id=&#34;api&#34;&gt;API&lt;/h2&gt;
+
+&lt;p&gt;Beacon exposes an api for provisioning id&amp;rsquo;s, updating ip entries, viewing entries, and deleting id&amp;rsquo;s.  The following  is the specification for endpoints and their protocols.&lt;/p&gt;
+
+&lt;h2 id=&#34;endpoints&#34;&gt;Endpoints&lt;/h2&gt;
+
+&lt;h2 id=&#34;get-value&#34;&gt;&lt;strong&gt;Get Value&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Returns registered keys value&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;URL&lt;/strong&gt;&lt;br /&gt;
+/&lt;code&gt;&amp;lt;beacon_id&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Method&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;GET&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sample Call&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;
+curl https://beacon.unixvoid.com/unixvoid
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;provision-an-id&#34;&gt;&lt;strong&gt;Provision an ID&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Registers a new ID(key) to use with beacon&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;URL&lt;/strong&gt;&lt;br /&gt;
+/provision&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Method&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;POST&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;URL Params&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;Required:&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;id&lt;/code&gt; : the intended id to provision&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sample Call&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;
+curl -d id=unixvoid https://beacon.unixvoid.com/provision
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Returns&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;200&lt;/code&gt; : client sec, an alphanumeric string for authorizing/removing entries&lt;br /&gt;
+&lt;code&gt;400&lt;/code&gt; : the client id is already in use&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;update-value&#34;&gt;&lt;strong&gt;Update Value&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Update a value for the indended key&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;URL&lt;/strong&gt;&lt;br /&gt;
+/update&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Method&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;POST&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;URL Params&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;Required:&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;id&lt;/code&gt;    : the intended id to provision&lt;br /&gt;
+&lt;code&gt;sec&lt;/code&gt;   : alphanumeric secret associated with registered beacon id&lt;br /&gt;
+&lt;code&gt;value&lt;/code&gt; : value to be updated&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sample Call&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;
+curl -d id=unixvoid -d sec=yQHfXWrUMVDNaHoSkDhRhqG26 -d value=127.0.0.1 https://beacon.unixvoid.com/update
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Returns&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;200&lt;/code&gt; : value updated successfully&lt;br /&gt;
+&lt;code&gt;403&lt;/code&gt; : client auth invalid&lt;br /&gt;
+&lt;code&gt;400&lt;/code&gt; : the client id does not exist&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;rotate-security-token&#34;&gt;&lt;strong&gt;Rotate Security Token&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Rotate the security token associated with a registered ID&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;URL&lt;/strong&gt;&lt;br /&gt;
+/rotate&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Method&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;POST&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;URL Params&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;Required:&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;sec&lt;/code&gt;   : alphanumeric secret associated with registered beacon id&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sample Call&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;
+curl -d id=unixvoid -d sec=yQHfXWrUMVDNaHoSkDhRhqG26 https://beacon.unixvoid.com/rotate
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Returns&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;200&lt;/code&gt; : new client sec, an alphanumeric string for authorizing/removing entries&lt;br /&gt;
+&lt;code&gt;403&lt;/code&gt; : client auth invalid&lt;br /&gt;
+&lt;code&gt;400&lt;/code&gt; : the client id does not exist&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;unregister-id&#34;&gt;&lt;strong&gt;Unregister ID&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Unregister/Remove a registered beacon ID&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;URL&lt;/strong&gt;&lt;br /&gt;
+/remove&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Method&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;POST&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;URL Params&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;Required:&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;id&lt;/code&gt;    : the intended id to unregister&lt;br /&gt;
+&lt;code&gt;sec&lt;/code&gt;   : alphanumeric secret associated with registered beacon id&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sample Call&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;
+curl -d id=unixvoid -d sec=yQHfXWrUMVDNaHoSkDhRhqG26 https://beacon.unixvoid.com/remove
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Returns&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;200&lt;/code&gt; : id unregistered successfully&lt;br /&gt;
+&lt;code&gt;403&lt;/code&gt; : client auth invalid&lt;br /&gt;
+&lt;code&gt;400&lt;/code&gt; : the client id does not exist&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Redis Data Structures with beacon</title>
+      <link>https://unixvoid.com/redis_data_structures/</link>
+      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
+      
+      <guid>https://unixvoid.com/redis_data_structures/</guid>
+      <description>&lt;p&gt;This is designed to help the user understand what is going on inside of redis at a low level.  The following are redis keys (with examples) and what they store.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;ip:&amp;lt;sha3:512 hashed id&amp;gt;&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+This entry is created only if a client has used the beacon-id to store an address
+type: redis key
+content: host ip
+example &lt;code&gt;ip:bd98828400c404c3feaf&amp;lt;SNIP&amp;gt;&lt;/code&gt; 192.168.2.2&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;sec:&amp;lt;sha3:512 hashed id&amp;gt;&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+This entry is created once an id has been provisioned.
+type: redis key
+content: sha3:512 hash of security key
+example &lt;code&gt;sec:bd98828400c404c3fea&amp;lt;SNIP&amp;gt;&lt;/code&gt; e7f8a5a8f35343d&lt;code&gt;&amp;lt;SNIP&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SSL Configuration</title>
+      <link>https://unixvoid.com/ssl_config/</link>
+      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
+      
+      <guid>https://unixvoid.com/ssl_config/</guid>
+      <description>&lt;p&gt;Beacon supports SSL out of the box.  The implementation is pretty simple, but results an &amp;lsquo;A&amp;rsquo; on &lt;a href=&#34;https://www.ssllabs.com/&#34;&gt;Qualys SSL Labs&lt;/a&gt;.  If a more lenient SSL implementation is needed you can edit the tls config portion of beacon.go.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tlsConfig := &amp;amp;tls.Config{
+	MinVersion:               tls.VersionTLS12,
+	CurvePreferences:         []tls.CurveID{tls.CurveP521, tls.CurveP384, tls.CurveP256},
+	PreferServerCipherSuites: true,
+	CipherSuites: []uint16{
+		tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+		tls.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+		tls.TLS_RSA_WITH_AES_256_CBC_SHA,
+	},
+	ClientSessionCache: tls.NewLRUClientSessionCache(128),
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A more lenient config would look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tlsConfig := &amp;amp;tls.Config{
+	MinVersion: tls.VersionTLS12,
+	MaxVersion: tls.VersionTLS12,
+	CipherSuites: []uint16{
+		tls.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+		tls.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,
+		tls.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+		tls.TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+		tls.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+		tls.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+		tls.TLS_RSA_WITH_AES_128_CBC_SHA,
+		tls.TLS_RSA_WITH_AES_256_CBC_SHA,
+		tls.TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA,
+		tls.TLS_RSA_WITH_3DES_EDE_CBC_SHA,
+	},
+	PreferServerCipherSuites: true,
+	ClientSessionCache:       tls.NewLRUClientSessionCache(128),
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The way I tend to use beacon is behind a reverse proxy (nginx) which I use to demark SSL, but the internal SSL implementation has been tested and is a very good stand alone SSL client.&lt;/p&gt;
+
+&lt;p&gt;If you intend to put beacon behind a reverse proxy simply set &lt;code&gt;usetls&lt;/code&gt; to &lt;code&gt;false&lt;/code&gt; in the config file.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Key-value storage API with Go</title>
+      <link>https://unixvoid.com/</link>
+      <pubDate>Tue, 08 Mar 2016 21:07:13 +0100</pubDate>
+      
+      <guid>https://unixvoid.com/</guid>
+      <description>
+
+&lt;h2 id=&#34;beacon&#34;&gt;Beacon&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://travis-ci.org/unixvoid/beacon&#34;&gt;&lt;img src=&#34;https://travis-ci.org/unixvoid/beacon.svg?branch=feature%2Ftests&#34; alt=&#34;Build Status (Travis)&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Beacon is a key-value discovery service designed for nsproxy but with global use. This project is mainly taken from bitnuke, with code from here Beacon allows for host discovery by uploading a hosts ip to the beacon server. Once an ip is registered in beacon, clients are able to pull the ip globally. The beacon api is available for public use globally at &lt;a href=&#34;https://beacon.unixvoid.com&#34;&gt;https://beacon.unixvoid.com&lt;/a&gt;. This service exposes an api where clients can request a beacon id and their clients can fetch the data.&lt;/p&gt;
+
+&lt;h2 id=&#34;quickstart&#34;&gt;Quickstart&lt;/h2&gt;
+
+&lt;p&gt;To quickly get beacon up and running check out our page on &lt;a href=&#34;https://hub.docker.com/r/unixvoid/beacon/&#34;&gt;dockerhub&lt;/a&gt;
+Or make sure you have &lt;a href=&#34;https://golang.org&#34;&gt;Golang&lt;/a&gt; and make installed, and use the following make commands:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;make deps&lt;/code&gt; to pull down all the &amp;lsquo;go gets&amp;rsquo;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;make run&lt;/code&gt; to run beacon!&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
