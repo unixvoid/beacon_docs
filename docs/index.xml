@@ -252,21 +252,25 @@ example &lt;code&gt;sec:bd98828400c404c3fea&amp;lt;SNIP&amp;gt;&lt;/code&gt; e7f
       <guid>https://unixvoid.github.io/beacon_docs/</guid>
       <description>
 
-&lt;h2 id=&#34;beacon&#34;&gt;Beacon&lt;/h2&gt;
+&lt;h1 id=&#34;beacon&#34;&gt;Beacon&lt;/h1&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://travis-ci.org/unixvoid/beacon&#34;&gt;&lt;img src=&#34;https://travis-ci.org/unixvoid/beacon.svg?branch=feature%2Ftests&#34; alt=&#34;Build Status (Travis)&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://travis-ci.org/unixvoid/beacon&#34;&gt;&lt;img src=&#34;https://travis-ci.org/unixvoid/beacon.svg?branch=feature%2Ftests&#34; alt=&#34;Build Status (Travis)&#34; /&gt;&lt;/a&gt;&lt;br /&gt;
+Beacon is an API for storing public key-value pairs. It is available for public
+use at &lt;a href=&#34;https://beacon.unixvoid.com&#34;&gt;beacon.unixvoid.com&lt;/a&gt;. Check out the
+documentation down below to find out how you can register some ID&amp;rsquo;s!&lt;/p&gt;
 
-&lt;p&gt;Beacon is a key-value discovery service designed for nsproxy but with global use. This project is mainly taken from bitnuke, with code from here Beacon allows for host discovery by uploading a hosts ip to the beacon server. Once an ip is registered in beacon, clients are able to pull the ip globally. The beacon api is available for public use globally at &lt;a href=&#34;https://beacon.unixvoid.com&#34;&gt;https://beacon.unixvoid.com&lt;/a&gt;. This service exposes an api where clients can request a beacon id and their clients can fetch the data.&lt;/p&gt;
+&lt;p&gt;Beacon was designed as a key value discovery service for nsproxy but with global use. Beacon allows
+for host discovery by uploading a hosts ip to the beacon server. Once an ip is registered in beacon,
+clients are able to pull the ip globally. The beacon api is available for public use globally
+at &lt;a href=&#34;https://beacon.unixvoid.com&#34;&gt;https://beacon.unixvoid.com&lt;/a&gt;. This service exposes an api where clients can request a beacon
+id and their clients can fetch the data.&lt;/p&gt;
 
-&lt;h2 id=&#34;quickstart&#34;&gt;Quickstart&lt;/h2&gt;
+&lt;h1 id=&#34;quickstart&#34;&gt;Quickstart&lt;/h1&gt;
 
 &lt;p&gt;To quickly get beacon up and running check out our page on &lt;a href=&#34;https://hub.docker.com/r/unixvoid/beacon/&#34;&gt;dockerhub&lt;/a&gt;
-Or make sure you have &lt;a href=&#34;https://golang.org&#34;&gt;Golang&lt;/a&gt; and make installed, and use the following make commands:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;make deps&lt;/code&gt; to pull down all the &amp;lsquo;go gets&amp;rsquo;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;make run&lt;/code&gt; to run beacon!&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
+Or make sure you have &lt;a href=&#34;https://golang.org&#34;&gt;Golang&lt;/a&gt; and make installed, and use the following make commands:&lt;br /&gt;
+* &lt;code&gt;make deps&lt;/code&gt; to pull down all the &amp;lsquo;go gets&amp;rsquo;&lt;br /&gt;
+* &lt;code&gt;make run&lt;/code&gt; to run beacon!&lt;/p&gt;
 </description>
     </item>
     
