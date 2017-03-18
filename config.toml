@@ -1,4 +1,4 @@
-baseurl = "https://unixvoid.com"
+baseurl = "https://unixvoid.github.io/beacon_docs/"
 languageCode = "en-us"
 title = "beacon-docs"
 theme = "hugo-material-docs"
